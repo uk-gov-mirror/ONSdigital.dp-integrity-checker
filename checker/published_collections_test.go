@@ -20,7 +20,7 @@ func TestCheckPublishedCollections(t *testing.T) {
 	Convey("Given a checker on a consistent workspace", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot,
 			"zebedee/master/somepage/v1",
@@ -64,7 +64,7 @@ func TestCheckPublishedCollections_FalsePositiveDeletedInLaterCollection(t *test
 	Convey("Given a checker on a workspace with content modified then deleted in a later collection", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot,
 			"zebedee/master/somepage/v1",
@@ -110,7 +110,7 @@ func TestCheckPublishedCollections_MissingDir(t *testing.T) {
 	Convey("Given a checker on a workspace with a published dir missing from master", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot,
 			"zebedee/master/somepage/v1",
@@ -170,7 +170,7 @@ func TestGetPublishedCollections(t *testing.T) {
 	Convey("Given a checker covering three days on a workspace with collections from five days", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot,
 			"zebedee/publish-log/2023-02-06-08-50-col0test",

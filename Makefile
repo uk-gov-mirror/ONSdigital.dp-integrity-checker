@@ -14,8 +14,8 @@ audit:
 	dis-vulncheck
 
 .PHONY: lint
-lint:
-	exit
+lint: ## Used in ci to run linters against Go code
+	golangci-lint run ./...
 
 .PHONY: build
 build:

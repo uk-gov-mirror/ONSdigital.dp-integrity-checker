@@ -21,7 +21,7 @@ func TestRun_Unreadable(t *testing.T) {
 	Convey("Given a checker on an unreadable directory", t, func() {
 		tempZebedeeRoot, err := os.CreateTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.Remove(tempZebedeeRoot.Name())
+		defer os.Remove(tempZebedeeRoot.Name()) //nolint:errcheck
 
 		chk := checker.Checker{
 			ZebedeeRoot: tempZebedeeRoot.Name(),
@@ -46,7 +46,7 @@ func TestRun_EmptyWorkspace(t *testing.T) {
 	Convey("Given a checker on an empty directory", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		chk := checker.Checker{
 			ZebedeeRoot: tempZebedeeRoot,
@@ -74,7 +74,7 @@ func TestRun_GoodWorkspaceNoCollections(t *testing.T) {
 	Convey("Given a checker on an valid but empty zebedee workspace", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot, "zebedee/master", "zebedee/publish-log")
 
@@ -102,7 +102,7 @@ func TestRun_MissingDirInMasterForPublishedCollection(t *testing.T) {
 	Convey("Given a checker on a workspace with a published dir missing from master", t, func() {
 		tempZebedeeRoot, err := os.MkdirTemp("", "checkertest")
 		So(err, ShouldBeNil)
-		defer os.RemoveAll(tempZebedeeRoot)
+		defer os.RemoveAll(tempZebedeeRoot) //nolint:errcheck
 
 		addDirs(tempZebedeeRoot,
 			"zebedee/master/somepage/v1",
